@@ -4,6 +4,8 @@ import json
 
 import numpy as np
 from prediksi import predict as prediction
+from prediksi_daun import predict as prediction_daun
+from prediksi_label import predict as prediction_label
 
 app = Flask(__name__)
 
