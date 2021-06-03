@@ -22,8 +22,7 @@ def index():
         "ruru": 19
     }
     data["val_umur"] = umur
-    test_file = open("images/leaf-tomato.jpg", "rb")
-    return json.dumps(data), test_file
+    return json.dumps(data)
 
 
 @app.route('/api/predict/test', methods=['GET'])
