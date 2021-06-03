@@ -19,7 +19,7 @@ from google.api_core.client_options import ClientOptions
 #VERSION_NAME = os.environ['v001']
 #MODEL_NAME = os.environ['tomatreat_model_1']
 
-MODEL_URI = 'http://localhost:8501/v1/models/label:predict'
+# MODEL_URI = 'http://localhost:8501/v1/models/label:predict'
 
 # lokasi di vmnya
 model_path = "./deploy_model_1"  # di sini letak model ml nya
@@ -29,10 +29,10 @@ ext_model = tf.keras.models.load_model(model_path)
 labels = list('labels.txt')
 
 #uploaded = files.upload()
-# uploaded = Image.open('images/leaf-tomato.jpg')
+uploaded = Image.open('images/leaf-tomato.jpg')
 
 
-def predict(uploaded):
+def predict():
     for fn in uploaded.keys():
         path = fn
         img = image.load_img(path, target_size=(256, 256))

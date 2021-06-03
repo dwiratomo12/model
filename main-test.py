@@ -32,7 +32,7 @@ def predict_test():
 
     uploaded = Image.open('images/leaf-tomato.jpg')
 
-    response_json = prediction_label(uploaded.tolist())
+    response_json = prediction_label()
 
     return response_json
 
