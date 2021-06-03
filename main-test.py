@@ -5,7 +5,7 @@ import json
 import numpy as np
 from PIL import Image
 from keras.preprocessing import image
-from prediksi_label import predict as prediction_label
+from prediksilabel import predict as prediction_label
 # from prediksi_daun import predict as prediction_daun
 
 app = Flask(__name__)
