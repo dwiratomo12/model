@@ -3,6 +3,7 @@ import os
 import json
 
 import numpy as np
+import requests
 from PIL import Image
 from keras.preprocessing import image
 from prediksilabel import predict as prediction_label
@@ -21,7 +22,8 @@ def index():
         "ruru": 19
     }
     data["val_umur"] = umur
-    return json.dumps(data)
+    test_file = open("images/leaf-tomato.jpg", "rb")
+    return json.dumps(data), test_file
 
 
 @app.route('/api/predict/test', methods=['GET'])
