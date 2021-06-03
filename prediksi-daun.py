@@ -17,7 +17,9 @@ classes = ['daun', 'nondaun']
 # Load the model
 best_model = load_model(model_path, compile=True)
 
-labels = list(train_generator.class_indices.keys())
+#labels = list(train_generator.class_indices.keys())
+labels = list('labels.txt')
+
 print(labels)
 uploaded = files.upload()
 daun = 0

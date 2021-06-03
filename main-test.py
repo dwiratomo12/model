@@ -3,9 +3,10 @@ import os
 import json
 
 import numpy as np
-from prediksi import predict as prediction
-from prediksi_daun import predict as prediction_daun
+from PIL import Image
+from keras.preprocessing import image
 from prediksi_label import predict as prediction_label
+# from prediksi_daun import predict as prediction_daun
 
 app = Flask(__name__)
 
@@ -23,43 +24,15 @@ def index():
     return json.dumps(data)
 
 
-@app.route('/input/<int:id>', methods=['GET'])
-def input_id(id):
-    parameter = str(id)
-    return parameter
-
-
-@app.route('/input/post/', methods=['POST'])
-def input_post():
-    args1 = request.args.get("kalimat")  # diterima di sini
-    input_predict = np.array([args1])
-
-    response = prediction(input_predict.tolist())
-    return response
-
-
 @app.route('/api/predict/test', methods=['GET'])
 def predict_test():
-    words = 'bangun tidur siang tengah aneh pindah texas milik konsentrasi halhal kerja rumah kelas 10 cepat jam ' \
-            'dentang 4 henti mudah laku pindah kerja rumah tantang kerja sibuk putus habis berjamjam laku bayar ' \
-            'perhati kelas barangbarang benarbenar keras tinggal lacak tahun malas jenius hei lambat baik benarbenar ' \
-            'fokus tinggal kampus konsentrasi mudah sayang tinggal rumah awas ketat tua omel adik omel omel omel ' \
-            'titik repot pergi jalan sekolah pergi pustaka ajar pindah memberitahu salah pindah pergi lindung milik ' \
-            'khawatir dunia satusatunya jaga kamar bersih bantu bisnis uang ut hidup asrama apartemen semester pikir ' \
-            'ambil untung off topik pergi jalan enam malam milik ledak cinta austin tinggal va pergi dc waktu milik ' \
-            'ledak siswa lari malam bersenangsenang tanggung bersenangsenang prioritas lurus tinggal rumah kau harap ' \
-            'laku tanggung adik kacau pergi gila pindah guru tinggi kacau karir guru tinggi pesta alas utama pergi ' \
-            'bersenangsenang biar pergi jajah dunia india budaya india nilainilai india lawan bersenangsenang maksud ' \
-            'temu orangorang pacar pesta bersenangsenang sekolah sulit pikir milik bebas tempat tekan buat sekolah ' \
-            'tua harap senang tulis pergi tulis bantu pikir urut harap bersenangsenang baca untung ta '
-    # words = request.args.get("nama")
-    input = np.array([words])
+    # request_json = request.json
+    # print("data: {}".format(request_json))
+    # print("type: {}".format(type(request_json)))
 
-    test_data = {
-        'instances': input.tolist()
-    }
-    data = json.dumps(test_data)
-    response_json = prediction(input.tolist())
+    uploaded = Image.open('images/leaf-tomato.jpg')
+
+    response_json = prediction_label(uploaded.tolist())
 
     return response_json
 
